@@ -2,14 +2,17 @@ const express = require("express")
 const router = express.Router()
 const giftExchange = require("../models/gift-exchange")
 
-// const voting = {
-//     "names": ["me", "you", "them", "us", "her", "him", "they", "y'all"]
-// }
 
 router.get("/", async (req,res, next) =>{
     //console.log("hello world")
     res.status(200).json("hello world")
 })
+
+router.get("/quiz", async (req, res, next) =>{
+    const quiz = await giftExchange.getQuiz()
+    res.status(200).json(quiz)
+})
+
 
 router.post("/pairs", async (req,res, next) =>{
     const listOfNames = req.body.names

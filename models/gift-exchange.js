@@ -2,6 +2,39 @@ const { BadRequestError } = require("../utils/errors");
 
 class GiftExchange{
 
+    static async getQuiz(){
+        const quiz = [
+            {
+                question: "2+2",
+                answerChoices: [
+                    "a. 1",
+                    "b. 2",
+                    "c. 3",
+                    "d. 4"
+                ] 
+            },
+            {
+                question: "7*1",
+                answerChoices: [
+                    "a. 7",
+                    "b. 6",
+                    "c. 5",
+                    "d. 4"
+                ] 
+            },
+            {
+                question: "1+0",
+                answerChoices: [
+                    "a. 0",
+                    "b. 1",
+                    "c. 2",
+                    "d. 3"
+                ] 
+            }
+        ]
+        return quiz
+    }
+
     static async createPairsArray(listOfNames){
         if(listOfNames.length == 0 || null){
             throw new BadRequestError("List of Names is empty. Need to add Names.")
