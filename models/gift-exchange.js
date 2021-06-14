@@ -1,7 +1,15 @@
+const { BadRequestError } = require("../utils/errors");
 
 class GiftExchange{
 
     static async createPairsArray(listOfNames){
+        if(listOfNames.length == 0 || null){
+            throw new BadRequestError("List of Names is empty. Need to add Names.")
+        }
+        if(listOfNames.length%2 != 0){
+            throw new BadRequestError("Odd List of names were given. Need even number of names.")
+        }
+
         let arr1 = listOfNames.slice() // copy array
         let arr2 = listOfNames.slice() // copy array again
 
@@ -23,6 +31,13 @@ class GiftExchange{
     }
 
     static async createPairsTraditional(listOfNames){
+        if(listOfNames.length == 0 || null){
+            throw new BadRequestError("List of Names is empty. Need to add Names.")
+        }
+        if(listOfNames.length%2 != 0){
+            throw new BadRequestError("Odd List of names were given. Need even number of names.")
+        }
+        
         let arr1 = listOfNames.slice() // copy array
         let arr2 = listOfNames.slice() // copy array again
 
